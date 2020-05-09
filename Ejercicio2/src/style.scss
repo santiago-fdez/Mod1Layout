@@ -1,0 +1,67 @@
+@import "redPalette.scss";
+//@import "bluePalette.scss";
+@mixin rounded-corners-all($size) {
+    border-radius: $size;
+    -webkit-border-radius: $size; // Safari, Chrome
+    -moz-border-radius: $size; // Firefox
+    }
+
+main { 
+    h1{
+    color:green;    
+    }
+    .container {
+        display:grid;
+        grid-template-columns: 120px;
+        grid-template-rows: 80px 80px 80px auto auto 80px;
+        grid-gap:3px;
+        .item-a {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            background-color:$bgColor1;
+        }
+        .item-b {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            background-color:$bgColor2;
+        }
+        .item-c {
+            grid-row-start: 3;
+            grid-row-end: 4;
+            background-color:$bgColor3;
+        }
+        .item-d {
+            grid-row-start: 4;
+            grid-row-end: 5;
+            background-color: white;
+        }
+        .item-e {
+            grid-row-start: 5;
+            grid-row-end: 6;
+            background-color: white;
+        } 
+        .item-f {
+            grid-row-start: 6;
+            grid-row-end: 7;
+            background-color:white;
+        } 
+    }
+
+}
+.box {
+    @include rounded-corners-all($borderRadius);
+    border: 1px solid gray;
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
+    padding:10px;
+  }
+.nowrap {white-space: nowrap}
+
+.fontFamily1{font-family: $fontFamily1;}
+.fontFamily2{font-family: $fontFamily2;}
+
+.shadow {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  -box-shadow:$shadow;
+}

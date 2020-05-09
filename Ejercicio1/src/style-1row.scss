@@ -1,0 +1,51 @@
+$bgColor1:red;
+$bgColor2:blue;
+$bgColor3:green;
+$fontColor1:white;
+$height:100px;
+
+@mixin rounded-corners-all($size) {
+  border-radius: $size;
+  -webkit-border-radius: $size; // Safari, Chrome
+  -moz-border-radius: $size; // Firefox
+  }
+
+main 
+{
+  h1 {
+  color:orangered;
+  } 
+  .container-1
+  {
+    display: grid;
+    grid-template-columns: repeat(9,1fr);
+    grid-template-rows: $height;
+    grid-gap: 10px;
+    .base-color {
+      background-color: $bgColor1;  
+      color:$fontColor1;
+      }  
+    @for $i from 1 through 4 {
+      .darken-#{$i} {
+        background-color: darken($bgColor1, 5%*$i);
+        .color-box-text{color:lighten($fontColor1, 10%*$i);
+        }
+      }
+      .lighten-#{$i} {
+        background-color: lighten($bgColor1, 5%*$i);
+        .color-box-text{color:darken($fontColor1, 10%*$i);}
+      }
+
+    }
+  }
+     
+}
+.box {
+  @include rounded-corners-all(4px);
+  border: 1px solid black;
+  text-align:center;
+}
+
+.color-box-text {
+  line-height:$height;vertical-align:middle;
+}

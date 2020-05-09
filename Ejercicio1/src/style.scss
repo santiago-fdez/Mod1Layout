@@ -1,0 +1,58 @@
+$height:100px;
+
+$rowList:(
+"1" red white,
+"2" green yellow,
+"3" blue purple);
+
+@mixin rounded-corners-all($size) {
+  border-radius: $size;
+  -webkit-border-radius: $size; // Safari, Chrome
+  -moz-border-radius: $size; // Firefox
+  }
+
+main 
+{
+  h2 {
+  color:blue;
+  }
+  @each $item,$bgColor,$fontColor in $rowList
+  { 
+    .container-#{$item}
+    {
+      display: grid;
+      grid-template-columns: repeat(9,1fr);
+      grid-template-rows: $height;
+      grid-gap: 10px;
+      margin: 10px;
+
+      .base-color {
+        background-color: $bgColor;  
+        color:$fontColor;
+        }  
+      
+        @for $i from 1 through 4 {
+        .darken-#{$i} {
+          background-color: darken($bgColor, 5%*$i);
+          .color-box-text{color:lighten($fontColor, 10%*$i);
+          }
+        }
+        .lighten-#{$i} {
+          background-color: lighten($bgColor, 5%*$i);
+          .color-box-text{color:darken($fontColor, 10%*$i);}
+        }
+
+      }
+    }
+  }   
+}
+.box {
+  @include rounded-corners-all(4px);
+  border: 1px solid grey;
+  text-align:center;
+}
+
+.color-box-text {
+  line-height:$height;
+  //vertical-align:middle;
+}
